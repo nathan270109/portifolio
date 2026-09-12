@@ -1,8 +1,9 @@
 .html {
-    width: 100%;
+    
     position: relative;
 }
 
 .html img {
     position: absolute;
+    width: 100%;
 }
