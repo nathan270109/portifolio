@@ -1,0 +1,18 @@
+.html {
+    width: 100%;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    padding: 20px;
+    backdrop-filter: ,blur(25px);
+}
+
+.link {
+    display: flex;
+    gap: 20px;
+}
+
+.link a {
+    text-decoration: none;
+    color: white;
+}
