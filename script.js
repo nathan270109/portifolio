@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  // Seleciona elementos para aplicar efeito de fade-in sutil
   const animatedElements = document.querySelectorAll('.project-card, .skill-category, .contact-box');
   
   animatedElements.forEach(el => {
@@ -46,4 +45,49 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
     observer.observe(el);
   });
+
+  // 3. Fundo Interativo: Mancha Borrada Seguindo o Mouse
+  const cursorGlow = document.getElementById('cursorGlow');
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function updateCursorGlow() {
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
+
+    cursorGlow.style.left = `${currentX}px`;
+    cursorGlow.style.top = `${currentY}px`;
+
+    requestAnimationFrame(updateCursorGlow);
+  }
+
+  updateCursorGlow();
+
+  // 4. Animação de Deslize Horizontal (Snap Scroll Effect) para a Seção Sobre
+  const aboutCard = document.querySelector('.ios-glass-card');
+
+  const aboutObserverOptions = {
+    threshold: 0.3,
+  };
+
+  const aboutObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        aboutCard.classList.add('active-slide');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, aboutObserverOptions);
+
+  if (aboutCard) {
+    aboutObserver.observe(document.getElementById('sobre'));
+  }
 });
