@@ -3,10 +3,10 @@
   --fg: #0e0e0e;
   --mut: #8a8982;
   --ln: #0e0e0e22;
-  --ac: #2a3cff;
+  --ac: #ffa62a;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px)
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @media (prefers-color-scheme:dark) {
@@ -15,7 +15,7 @@
     --fg: #e8e7e1;
     --mut: #77766f;
     --ln: #e8e7e122;
-    --ac: #6b78ff
+    --ac: #ffbc6b;
   }
 }
 
@@ -24,18 +24,18 @@
   --fg: #e8e7e1;
   --mut: #77766f;
   --ln: #e8e7e122;
-  --ac: #6b78ff
+  --ac: #ffd56b;
 }
 
 html {
   scroll-padding-top: env(safe-area-inset-top, 0px);
-  scroll-behavior: smooth
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 body {
@@ -43,12 +43,12 @@ body {
   color: var(--fg);
   font-family: Archivo, Helvetica, Arial, sans-serif;
   font-stretch: 100%;
-  overflow-x: hidden
+  overflow-x: hidden;
 }
 
 a {
   color: inherit;
-  text-decoration: none
+  text-decoration: none;
 }
 
 button {
@@ -56,14 +56,14 @@ button {
   color: inherit;
   background: none;
   border: 0;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .m {
   font-family: "DM Mono", ui-monospace, monospace;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: .02em
+  letter-spacing: .02em;
 }
 
 body::after {
@@ -74,7 +74,7 @@ body::after {
   z-index: 90;
   opacity: .09;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* preloader */
@@ -88,7 +88,7 @@ body::after {
   align-items: flex-end;
   justify-content: space-between;
   padding: 24px 2.2vw;
-  transition: transform .9s cubic-bezier(.76, 0, .24, 1)
+  transition: transform .9s cubic-bezier(.76, 0, .24, 1);
 }
 
 #pre.done {
@@ -99,7 +99,7 @@ body::after {
   font-size: clamp(5rem, 22vw, 22rem);
   font-weight: 800;
   font-stretch: 62%;
-  line-height: .78
+  line-height: .78;
 }
 
 /* header */
@@ -113,7 +113,7 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   padding: calc(16px + env(safe-area-inset-top, 0px)) 2.2vw 16px;
   mix-blend-mode: difference;
-  color: #fff
+  color: #fff;
 }
 
 header nav {
@@ -449,4 +449,19 @@ footer .big:hover {
   .name .l {
     transform: none
   }
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+main,
+footer {
+  position: relative;
+  z-index: 1;
 }

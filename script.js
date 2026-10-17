@@ -64,3 +64,76 @@ const iv = setInterval(() => {
   n = Math.min(100, n + Math.ceil(Math.random() * 9)); cnt.textContent = n;
   if (n >= 100) { clearInterval(iv); setTimeout(() => { pre.classList.add("done"); document.body.classList.add("go") }, 250) }
 }, 50);
+
+/* fundo interativo: grade de pontos que reage ao cursor */
+const cv = $("#bg"), cx = cv.getContext("2d");
+const GAP = 50, reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+let BW, BH, cFg = "#0e0e0e", cAc = "#ac791a", gx = 0, gy = 0, seen = false, boost = 0;
+const trail = [];
+
+function readColors() {
+  const s = getComputedStyle(document.documentElement);
+  cFg = s.getPropertyValue("--fg").trim();
+  cAc = s.getPropertyValue("--ac").trim();
+}
+function resize() {
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  BW = innerWidth; BH = innerHeight;
+  cv.width = BW * dpr; cv.height = BH * dpr;
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  if (reduce) bg(0);
+}
+addEventListener("resize", resize);
+$("#th").addEventListener("click", () => setTimeout(readColors, 0));
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change", () => setTimeout(readColors, 0));
+
+addEventListener("pointermove", e => {
+  mx = e.clientX; my = e.clientY;
+  if (!seen) { seen = true; gx = mx; gy = my; }
+  const last = trail[trail.length - 1];
+  if (!last || Math.hypot(mx - last.x, my - last.y) > 14) {
+    trail.push({ x: mx, y: my, l: 1 });
+    if (trail.length > 24) trail.shift();
+  }
+});
+addEventListener("mouseover", e => { boost = e.target.closest(".row") ? 1 : 0; });
+
+function bg(t) {
+  cx.clearRect(0, 0, BW, BH);
+  const src = [];
+  if (seen) {
+    gx += (mx - gx) * .12; gy += (my - gy) * .12;
+    const R = 150 + boost * 90;
+    src.push({ x: gx, y: gy, l: 1, r: R });
+    for (let i = trail.length - 1; i >= 0; i--) {
+      trail[i].l *= .94;
+      if (trail[i].l < .03) trail.splice(i, 1);
+      else src.push({ x: trail[i].x, y: trail[i].y, l: trail[i].l * .5, r: R * .7 });
+    }
+  }
+  const off = (scrollY * .15) % GAP;
+  for (let j = -1; j * GAP < BH + GAP; j++) {
+    for (let i = 0; i * GAP < BW + GAP; i++) {
+      const hx = i * GAP + GAP / 2, hy = j * GAP + GAP / 2 - off;
+      let ox = 0, oy = 0, k = 0;
+      for (const s of src) {
+        const dx = hx - s.x, dy = hy - s.y, d = Math.hypot(dx, dy);
+        if (d < s.r) {
+          const f = (1 - d / s.r) ** 2 * s.l;
+          ox += dx / (d || 1) * f * 46; oy += dy / (d || 1) * f * 46; k += f;
+        }
+      }
+      k = Math.min(k, 1);
+      const amb = .5 + .5 * Math.sin(t * .0012 + hx * .012 + hy * .017);
+      cx.globalAlpha = .18 + amb * .1 + k * .8;
+      cx.fillStyle = k > .08 ? cAc : cFg;
+      cx.beginPath();
+      cx.arc(hx + ox, hy + oy, 1.1 + amb * .5 + k * 3.2, 0, 6.2832);
+      cx.fill();
+    }
+  }
+  cx.globalAlpha = 1;
+  if (!reduce) requestAnimationFrame(bg);
+}
+readColors(); resize();
+if (!reduce) requestAnimationFrame(bg);
