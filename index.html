@@ -2,176 +2,70 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nathan S. — Desenvolvedor Front-End</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NS — Desenvolvimento Front-End</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="img/logo-aba.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <div id="pre"><span class="m">NT — Portfólio 2026</span><span id="cnt">0</span></div>
+  <div id="pv"></div>
 
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <nav class="navbar">
-    <div class="container nav-content">
-      <a href="#" class="brand">NathanS<span class="dot">.</span></a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggle" aria-label="Alternar Tema">
-        <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18">
-          <path fill="currentColor"
-            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z" />
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- HOME / HERO SECTION -->
-  <header id="home" class="hero container full-screen-section">
-    <div>
-      <div class="hero-badge">
-        <span class="status-dot"></span> Disponível para novos projetos
-      </div>
-      <h1 class="hero-title">
-        Desenvolvo interfaces web rápidas, acessíveis e focadas na experiência do usuário.
-      </h1>
-      <p class="hero-subtitle">
-        Nathan Salatiel Marques de Oliveira, 17 anos. Front-End Developer focado em Angular, TypeScript e criação de interfaces. Além do código, sou atleta, fotógrafo e desenhista, unindo disciplina e criatividade visual em cada projeto.
-      </p>
-      <div class="hero-actions">
-        <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-        <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
-      </div>
-    </div>
+  <header class="m">
+    <a href="#top">NATHAN SALATIEL MARQUES DE OLIVEIRA</a>
+    <span class="c">Blumenau, BR <span id="clk"></span></span>
+    <nav><a href="#obras">Obras (00)</a><a href="#oficio">Ofício</a><a href="#contato">Contato</a><button
+        id="th">Tema</button></nav>
   </header>
 
-  <!-- SOBRE MIM (Snap Scroll Horizontal com Transparência iOS e Foto Pessoal) -->
-  <section id="sobre" class="section container full-screen-section horizontal-scroll-section">
-    <div class="horizontal-track" style="width: 100%;">
-      <div class="ios-glass-card">
-        <div class="about-image-wrapper">
-          <img src="img/foto-pessoal.jpeg" alt="Nathan Salatiel como atleta" class="about-photo" />
-        </div>
-        <div class="about-text-content">
-          <div class="section-header" style="margin-bottom: 1rem;">
-            <h2>Sobre Mim</h2>
-            <p>Conheça um pouco da minha trajetória e paixões.</p>
-          </div>
-          <p style="line-height: 1.6; font-size: 0.95rem;">
-            Tenho 17 anos e acabei de me especializar em <strong>Angular</strong>. Minha rotina combina a disciplina do esporte como atleta com o olhar criativo da fotografia e do desenho, referências que levo diretamente para o design de interfaces e o desenvolvimento Front-End.
-          </p>
-        </div>
+  <main id="top">
+    <section class="hero">
+      <h1 class="name" id="nm" aria-label="Nathan Salatiel Marques de Oliveira">
+        <span class="w" data-t="Nathan"></span>
+        <span class="w" data-t="Salatiel"></span>
+      </h1>
+      <div class="meta m">
+        <p><span>Ofício</span>Desenvolvedor front-end</p>
+        <p><span>Local</span>Blumenau, SC — remoto</p>
+        <p><span>Agenda</span>Sempre disponível</p>
       </div>
+    </section>
+
+    <section class="sec" id="obras">
+      <div class="head m"><span>Obras Criadas</span><span>2026</span></div>
+      <div id="list"></div>
+    </section>
+
+    <section class="st">
+      <p id="stt">Desenho no Figma de manhã e escrevo o CSS à tarde. Nada se perde na tradução entre uma etapa e outra,
+        porque quem projeta é quem entrega. O resultado é um site que funciona no celular de 2019 e ainda assim
+        surpreende.</p>
+    </section>
+
+    <section class="sec" id="oficio">
+      <div class="head m"><span>Ofício</span><span>(04)</span></div>
+      <div id="svc"></div>
+    </section>
+  </main>
+
+  <footer id="contato">
+    <a class="big" href="mailto:natiel228@gmail.com">Vamos<br>conversar</a>
+    <div class="fb m">
+      <button id="cp">natiel228@gmail.com — copiar</button>
+      <div><a href="https://www.instagram.com/nathansalatiel/?__d=1%252F">Instagram</a><a href="https://github.com/nathan270109">GitHub</a><a href="https://www.linkedin.com/in/nathansalatas/">Linkedin</a></div>
+      <span>© 2026</span>
     </div>
-  </section>
+  </footer>
 
-  <!-- PROJETOS -->
-  <section id="projetos" class="section container full-screen-section">
-    <div style="width: 100%;">
-      <div class="section-header">
-        <h2>Projetos Selecionados</h2>
-        <p>Uma amostra de aplicações reais com foco em performance e arquitetura limpa.</p>
-      </div>
+  <script src="script.js">
 
-      <div class="projects-grid">
-
-        <article class="project-card">
-          <div class="project-image-wrapper">
-            <div class="project-mockup secondary-mockup">
-              <span class="mockup-tag">E-Commerce</span>
-            </div>
-          </div>
-          <div class="project-content">
-            <div class="project-tags">
-              <span>Angular</span>
-            </div>
-            <h3>Project Conscious</h3>
-            <p>
-              Este projeto é um trabalho em equipe que análisa seu repositório e diz a saúde dele, se está saudável ou não.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/nathan270109/project-conscious" target="_blank" rel="noopener">Repositório →</a>
-              <a href="" target="_blank" rel="noopener">Live Demo ↗</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- HABILIDADES -->
-  <section id="habilidades" class="section container full-screen-section">
-    <div style="width: 100%;">
-      <div class="section-header">
-        <h2>Tecnologias & Habilidades</h2>
-        <p>O ecossistema que utilizo diariamente para construir aplicações modernas.</p>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h4>Core Front-End</h4>
-          <ul>
-            <li>HTML5</li>
-            <li>CSS3 Moderno / Flexbox & Grid</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-          </ul>
-        </div>
-
-        <div class="skill-category">
-          <h4>Frameworks & Libs</h4>
-          <ul>
-            <li>Angular</li>
-            <li>CSS / Styled Components</li>
-            <li>HttpClient</li>
-          </ul>
-        </div>
-
-        <div class="skill-category">
-          <h4>Perfil & Interesses</h4>
-          <ul>
-            <li>Atleta (Disciplina e Foco)</li>
-            <li>Fotografia (Olhar Visual e Composição)</li>
-            <li>Desenho (Criatividade e UI/UX)</li>
-            <li>Git / GitHub Workflow</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO E RODAPÉ -->
-  <section id="contato" class="section container full-screen-section contact-screen">
-    <div style="width: 100%;">
-      <div class="contact-box">
-        <h2>Vamos construir algo juntos?</h2>
-        <p>Estou aberto a oportunidades como desenvolvedor front-end, projetos freelance ou colaborações.</p>
-        <div class="contact-methods">
-          <a href="mailto:seuemail@exemplo.com" class="btn btn-primary">Enviar E-mail</a>
-          <div class="social-links">
-            <a href="https://linkedin.com/in/nathansalatas" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/nathan270109" target="_blank" rel="noopener">GitHub</a>
-            <a href="./seu-curriculo.pdf" target="_blank" rel="noopener">Currículo PDF</a>
-          </div>
-        </div>
-      </div>
-      
-      <footer class="footer">
-        <p>© 2026 Nathan Salatiel Marques de Oliveira. Projetado e codificado com foco em simplicidade.</p>
-      </footer>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+  </script>
 </body>
 
 </html>
