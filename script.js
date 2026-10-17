@@ -23,11 +23,11 @@ const pv = $("#pv"); let mx = 0, my = 0, px = 0, py = 0;
 $("#list").innerHTML = P.map((p, i) => `<a href="${p.u || '#'}" target="_blank" rel="noopener" class="row" data-i="${i}"><h3>${p.n}</h3><span class="m">${p.d}</span><span class="m">${p.c}</span><span class="m">${p.y}</span></a>`).join("");
 document.querySelectorAll(".row").forEach(r => {
   r.onmouseenter = () => {
-  const i = +r.dataset.i, p = P[i];
-  pv.innerHTML = p.img ? `<img src="${p.img}" alt="${p.n}">` : art(p, i);
-  pv.classList.add("on");
-};
- r.onmouseleave = () => pv.classList.remove("on");
+    const i = +r.dataset.i, p = P[i];
+    pv.innerHTML = p.img ? `<img src="${p.img}" alt="${p.n}">` : art(p, i);
+    pv.classList.add("on");
+  };
+  r.onmouseleave = () => pv.classList.remove("on");
 });
 addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY });
 /* nome: letras reagem ao cursor (eixo de largura da fonte variável) */
@@ -56,7 +56,7 @@ function sc() {
 addEventListener("scroll", sc, { passive: true }); sc();
 /* relógio, tema, copiar */
 const tk = () => $("#clk").textContent = "— " + new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }); tk(); setInterval(tk, 30000);
-;$("#th").onclick = () => { const r = document.documentElement, d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches; r.dataset.theme = d ? "light" : "dark" }
+; $("#th").onclick = () => { const r = document.documentElement, d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches; r.dataset.theme = d ? "light" : "dark" }
 $("#cp").onclick = async e => { const b = e.currentTarget, t = b.textContent; try { await navigator.clipboard.writeText("natiel228@gmail.com"); b.textContent = "copiado ✓" } catch (_) { b.textContent = "natiel228@gmail.com" } setTimeout(() => b.textContent = t, 1600) };
 /* preloader */
 let n = 0; const cnt = $("#cnt"), pre = $("#pre");
