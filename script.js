@@ -2,7 +2,8 @@ const P = [
   { n: "Project Conscious", y: 2026, d: "Aplicação Front-End", c: "Projeto em Equipe", k: ["#2a3cff", "#e8e7e1", "#0e0e0e"], img: "img/project-conscious.jpg", u: "https://github.com/nathan270109/project-conscious", },
 ];
 const S = [
-  ["Desenho", "Observação, traço e composição. Desenhar me ensinou a olhar para proporção, ritmo e espaço vazio, e isso aparece em cada interface que eu monto."],
+  ["Desenho", "Desenhista amador. Desenhar me ensinou a olhar para proporção, ritmo e espaço vazio, e isso aparece em cada interface que eu monto."],
+  ["Fotografia", "Fotógrafo amador, com curso na área. Gosto de trabalhar enquadramento, luz e contraste, e levo esse olhar para o front-end: saber o que mostrar, o que deixar de fora e onde o olho deve pousar."],
   ["Esporte", "Treino, constância e disciplina. Aprendi no esporte a lidar com pressão, a repetir até acertar e a trabalhar em equipe."],
   ["Angular", "Aplicações front-end com componentes, rotas, formulários e consumo de API em TypeScript. Foi com Angular que construí o Project Conscious."],
   ["HTML, CSS e JavaScript", "A base de tudo: páginas semânticas, layouts responsivos e interações escritas à mão, sem excesso de bibliotecas."]
