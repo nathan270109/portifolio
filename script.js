@@ -36,9 +36,11 @@ const L = [...document.querySelectorAll(".l")];
 (function loop() {
   px += (mx - px) * .14; py += (my - py) * .14; pv.style.transform = `translate(${px + 28}px,${py - 90}px)`;
   L.forEach(l => {
-    const b = l.getBoundingClientRect(), d = Math.hypot(mx - (b.left + b.width / 2), my - (b.top + b.height / 2));
-    const f = Math.max(0, 1 - d / (innerWidth * .28)); l.style.fontVariationSettings = `"wdth" ${78 + f * 44}`
-  });
+  const b = l.getBoundingClientRect(), d = Math.hypot(mx - (b.left + b.width / 2), my - (b.top + b.height / 2));
+  const f = Math.max(0, 1 - d / (innerWidth * .28));
+  l.style.fontVariationSettings = `"wdth" ${78 + f * 44}`;
+  l.style.color = `color-mix(in srgb, var(--ac) ${Math.min(1, f * 2.5) * 100}%, var(--fg))`;
+});
   requestAnimationFrame(loop)
 })();
 /* serviços */
@@ -65,6 +67,7 @@ const iv = setInterval(() => {
   if (n >= 100) { clearInterval(iv); setTimeout(() => { pre.classList.add("done"); document.body.classList.add("go") }, 250) }
 }, 50);
 
+/*////////////////////////////*/
 /* fundo interativo: grade de pontos que reage ao cursor */
 const cv = $("#bg"), cx = cv.getContext("2d");
 const GAP = 50, reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
