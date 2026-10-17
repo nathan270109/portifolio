@@ -1,15 +1,11 @@
 const P = [
-  { n: "Project Conscious", y: 2026, d: "Aplicação Front-End", c: "Projeto em Equipe", k: ["#2a3cff", "#e8e7e1", "#0e0e0e"], img: "img/project-conscious.jpg" },
-  { n: "Hüttenbau", y: 2025, d: "Site institucional", c: "Marcenaria", k: ["#c8472d", "#0e0e0e", "#e8e7e1"] },
-  { n: "Fio Cerâmica", y: 2025, d: "E-commerce", c: "Estúdio Fio", k: ["#e8c9a8", "#2b2118", "#c8472d"] },
-  { n: "Âncora", y: 2024, d: "UX/UI de aplicativo", c: "Banco digital", k: ["#0e0e0e", "#d9ff3f", "#e8e7e1"] },
-  { n: "Revista Nó", y: 2022, d: "Design editorial web", c: "Independente", k: ["#e8e7e1", "#2a3cff", "#0e0e0e"] }
+  { n: "Project Conscious", y: 2026, d: "Aplicação Front-End", c: "Projeto em Equipe", k: ["#2a3cff", "#e8e7e1", "#0e0e0e"], img: "img/project-conscious.jpg", u: "https://github.com/nathan270109/project-conscious", },
 ];
 const S = [
-  ["Direção de arte", "Conceito, identidade e sistema visual pensados para a tela. Começo no papel, depois vou para o Figma com tipografia e grid definidos."],
-  ["Design de interface", "Fluxos, protótipos e testes com usuários reais. Menos telas, mais decisões justificadas."],
-  ["Desenvolvimento", "HTML, CSS e JavaScript escritos à mão, sem excesso de bibliotecas. Acessível, leve e fácil de manter."],
-  ["Animação e interação", "Movimento com função: guiar o olhar, dar retorno, contar uma sequência. Sempre respeitando quem prefere menos animação."]
+  ["Desenho", "Observação, traço e composição. Desenhar me ensinou a olhar para proporção, ritmo e espaço vazio, e isso aparece em cada interface que eu monto."],
+  ["Esporte", "Treino, constância e disciplina. Aprendi no esporte a lidar com pressão, a repetir até acertar e a trabalhar em equipe."],
+  ["Angular", "Aplicações front-end com componentes, rotas, formulários e consumo de API em TypeScript. Foi com Angular que construí o Project Conscious."],
+  ["HTML, CSS e JavaScript", "A base de tudo: páginas semânticas, layouts responsivos e interações escritas à mão, sem excesso de bibliotecas."]
 ];
 const $ = s => document.querySelector(s);
 /* arte procedural para as prévias */
@@ -23,10 +19,14 @@ function art(p, i) {
   return `<svg viewBox="0 0 280 360" preserveAspectRatio="xMidYMid slice">${s}</svg>`
 }
 const pv = $("#pv"); let mx = 0, my = 0, px = 0, py = 0;
-$("#list").innerHTML = P.map((p, i) => `<a href="#" class="row" data-i="${i}"><h3>${p.n}</h3><span class="m">${p.d}</span><span class="m">${p.c}</span><span class="m">${p.y}</span></a>`).join("");
+$("#list").innerHTML = P.map((p, i) => `<a href="${p.u || '#'}" target="_blank" rel="noopener" class="row" data-i="${i}"><h3>${p.n}</h3><span class="m">${p.d}</span><span class="m">${p.c}</span><span class="m">${p.y}</span></a>`).join("");
 document.querySelectorAll(".row").forEach(r => {
-  r.onmouseenter = () => { const i = +r.dataset.i; pv.innerHTML = art(P[i], i); pv.classList.add("on") };
-  r.onmouseleave = () => pv.classList.remove("on"); r.onclick = e => e.preventDefault()
+  r.onmouseenter = () => {
+  const i = +r.dataset.i, p = P[i];
+  pv.innerHTML = p.img ? `<img src="${p.img}" alt="${p.n}">` : art(p, i);
+  pv.classList.add("on");
+};
+ r.onmouseleave = () => pv.classList.remove("on");
 });
 addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY });
 /* nome: letras reagem ao cursor (eixo de largura da fonte variável) */
@@ -55,8 +55,8 @@ function sc() {
 addEventListener("scroll", sc, { passive: true }); sc();
 /* relógio, tema, copiar */
 const tk = () => $("#clk").textContent = "— " + new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" }); tk(); setInterval(tk, 30000);
-$("#th").onclick = () => { const r = document.documentElement, d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches; r.dataset.theme = d ? "light" : "dark" };
-$("#cp").onclick = async e => { const b = e.currentTarget, t = b.textContent; try { await navigator.clipboard.writeText("oi@marinavolker.com"); b.textContent = "copiado ✓" } catch (_) { b.textContent = "oi@marinavolker.com" } setTimeout(() => b.textContent = t, 1600) };
+;$("#th").onclick = () => { const r = document.documentElement, d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme:dark)").matches; r.dataset.theme = d ? "light" : "dark" }
+$("#cp").onclick = async e => { const b = e.currentTarget, t = b.textContent; try { await navigator.clipboard.writeText("natiel228@gmail.com"); b.textContent = "copiado ✓" } catch (_) { b.textContent = "natiel228@gmail.com" } setTimeout(() => b.textContent = t, 1600) };
 /* preloader */
 let n = 0; const cnt = $("#cnt"), pre = $("#pre");
 const iv = setInterval(() => {
